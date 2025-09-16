@@ -7,3 +7,8 @@ frame[-10:, :] = [255, 0, 0]      # Bottom border
 frame[:, :10] = [255, 0, 0]       # Left border
 frame[:, -10:] = [255, 0, 0]    # Right border
 
+with pvc.Camera(width=200, height=300, fps=20) as cam:
+    print(f'Using virtual camera: {cam.device}')
+    while True:
+        cam.send(frame)
+        cam.sleep_until_next_frame()
